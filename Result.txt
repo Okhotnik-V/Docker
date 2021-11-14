@@ -1,0 +1,1 @@
+{"vowels":"a ","type_input":"File","line":"Docker Max","vowels_number":3,"inspections":2,"consonants_number":6,"consonants":"x ","time":"2021-11-14 22:04:47.026"}
