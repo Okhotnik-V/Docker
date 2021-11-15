@@ -17,7 +17,7 @@ public class Counter implements Counting {
     @Override
     public List<String> identify(String textIdentify) {
         try {
-            String vowels = null, consonants = null;
+            String vowels = "", consonants = "";
             int vowelsQuantity = 0, consonantsQuantity = 0;
             String replace = textIdentify.replaceAll("\\s+", "");
             char[] textToArray = replace.toCharArray();
@@ -26,13 +26,12 @@ public class Counter implements Counting {
                 Matcher matcher = pattern.matcher(String.valueOf(textToArray[i]));
                 if (matcher.find()) {
                     vowelsQuantity++;
-                    vowels = String.valueOf(textToArray[i]) + " ";
+                    vowels = vowels + String.valueOf(textToArray[i]) + " ";
                 } else {
                     consonantsQuantity++;
-                    consonants = String.valueOf(textToArray[i]) + " ";
+                    consonants = consonants + String.valueOf(textToArray[i]) + " ";
                 }
             }
-
             List<String> identifyResult = new ArrayList<>();
             identifyResult.add(String.valueOf(vowelsQuantity));
             identifyResult.add(String.valueOf(consonantsQuantity));
