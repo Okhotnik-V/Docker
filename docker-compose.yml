@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  app-server:
+    container_name: java-compose
+    build: .
+    ports:
+    - "8090:8090"
+    restart: always
+    depends_on:
+      - mongodb
+      - mysqldb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/springdb
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/strdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: okhotnik
+
+  mongodb:
+    container_name: mongo-compose
+    image: mongo
+    ports:
+      - "2717:27017"
+    restart: always
+
+  mysqldb:
+    container_name: mysql-compose
+    image: mysql/mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: okhotnik
+    ports:
+      - "3306:3306"
+    restart: always
